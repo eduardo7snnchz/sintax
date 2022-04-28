@@ -1,0 +1,687 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CASE
+    DO
+    ELSE
+    FOR
+    IF
+    OR
+    SUMA
+    SWITCH
+    WHILE
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> expression AND term
+Rule 2     expression -> expression RESTA term
+Rule 3     expression -> term
+Rule 4     term -> term MULTIPLICACION factor
+Rule 5     term -> term DIVISION factor
+Rule 6     term -> factor
+Rule 7     factor -> NUMERO
+Rule 8     factor -> PARENTESISI expression PARENTESISD
+Rule 9     term -> term POTENCIA term
+Rule 10    term -> term RESTO term
+Rule 11    expression -> term MAYORQUE term
+Rule 12    expression -> term MENORQUE term
+Rule 13    expression -> term IGUAL term
+Rule 14    expression -> term MAYOROIGUALQUE term
+Rule 15    expression -> term MENOROIGUALQUE term
+Rule 16    expression -> term DIFERENTE term
+
+Terminals, with rules where they appear
+
+AND                  : 1
+CASE                 : 
+DIFERENTE            : 16
+DIVISION             : 5
+DO                   : 
+ELSE                 : 
+FOR                  : 
+IF                   : 
+IGUAL                : 13
+MAYOROIGUALQUE       : 14
+MAYORQUE             : 11
+MENOROIGUALQUE       : 15
+MENORQUE             : 12
+MULTIPLICACION       : 4
+NUMERO               : 7
+OR                   : 
+PARENTESISD          : 8
+PARENTESISI          : 8
+POTENCIA             : 9
+RESTA                : 2
+RESTO                : 10
+SUMA                 : 
+SWITCH               : 
+WHILE                : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 2 8 0
+factor               : 4 5 6
+term                 : 1 2 3 4 5 9 9 10 10 11 11 12 12 13 13 14 14 15 15 16 16
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . expression AND term
+    (2) expression -> . expression RESTA term
+    (3) expression -> . term
+    (11) expression -> . term MAYORQUE term
+    (12) expression -> . term MENORQUE term
+    (13) expression -> . term IGUAL term
+    (14) expression -> . term MAYOROIGUALQUE term
+    (15) expression -> . term MENOROIGUALQUE term
+    (16) expression -> . term DIFERENTE term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    expression                     shift and go to state 1
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+
+state 1
+
+    (0) S' -> expression .
+    (1) expression -> expression . AND term
+    (2) expression -> expression . RESTA term
+
+    AND             shift and go to state 6
+    RESTA           shift and go to state 7
+
+
+state 2
+
+    (3) expression -> term .
+    (11) expression -> term . MAYORQUE term
+    (12) expression -> term . MENORQUE term
+    (13) expression -> term . IGUAL term
+    (14) expression -> term . MAYOROIGUALQUE term
+    (15) expression -> term . MENOROIGUALQUE term
+    (16) expression -> term . DIFERENTE term
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 3 (expression -> term .)
+    RESTA           reduce using rule 3 (expression -> term .)
+    $end            reduce using rule 3 (expression -> term .)
+    PARENTESISD     reduce using rule 3 (expression -> term .)
+    MAYORQUE        shift and go to state 8
+    MENORQUE        shift and go to state 9
+    IGUAL           shift and go to state 10
+    MAYOROIGUALQUE  shift and go to state 11
+    MENOROIGUALQUE  shift and go to state 12
+    DIFERENTE       shift and go to state 13
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 3
+
+    (6) term -> factor .
+
+    MAYORQUE        reduce using rule 6 (term -> factor .)
+    MENORQUE        reduce using rule 6 (term -> factor .)
+    IGUAL           reduce using rule 6 (term -> factor .)
+    MAYOROIGUALQUE  reduce using rule 6 (term -> factor .)
+    MENOROIGUALQUE  reduce using rule 6 (term -> factor .)
+    DIFERENTE       reduce using rule 6 (term -> factor .)
+    MULTIPLICACION  reduce using rule 6 (term -> factor .)
+    DIVISION        reduce using rule 6 (term -> factor .)
+    POTENCIA        reduce using rule 6 (term -> factor .)
+    RESTO           reduce using rule 6 (term -> factor .)
+    AND             reduce using rule 6 (term -> factor .)
+    RESTA           reduce using rule 6 (term -> factor .)
+    $end            reduce using rule 6 (term -> factor .)
+    PARENTESISD     reduce using rule 6 (term -> factor .)
+
+
+state 4
+
+    (7) factor -> NUMERO .
+
+    MAYORQUE        reduce using rule 7 (factor -> NUMERO .)
+    MENORQUE        reduce using rule 7 (factor -> NUMERO .)
+    IGUAL           reduce using rule 7 (factor -> NUMERO .)
+    MAYOROIGUALQUE  reduce using rule 7 (factor -> NUMERO .)
+    MENOROIGUALQUE  reduce using rule 7 (factor -> NUMERO .)
+    DIFERENTE       reduce using rule 7 (factor -> NUMERO .)
+    MULTIPLICACION  reduce using rule 7 (factor -> NUMERO .)
+    DIVISION        reduce using rule 7 (factor -> NUMERO .)
+    POTENCIA        reduce using rule 7 (factor -> NUMERO .)
+    RESTO           reduce using rule 7 (factor -> NUMERO .)
+    AND             reduce using rule 7 (factor -> NUMERO .)
+    RESTA           reduce using rule 7 (factor -> NUMERO .)
+    $end            reduce using rule 7 (factor -> NUMERO .)
+    PARENTESISD     reduce using rule 7 (factor -> NUMERO .)
+
+
+state 5
+
+    (8) factor -> PARENTESISI . expression PARENTESISD
+    (1) expression -> . expression AND term
+    (2) expression -> . expression RESTA term
+    (3) expression -> . term
+    (11) expression -> . term MAYORQUE term
+    (12) expression -> . term MENORQUE term
+    (13) expression -> . term IGUAL term
+    (14) expression -> . term MAYOROIGUALQUE term
+    (15) expression -> . term MENOROIGUALQUE term
+    (16) expression -> . term DIFERENTE term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    expression                     shift and go to state 18
+    term                           shift and go to state 2
+    factor                         shift and go to state 3
+
+state 6
+
+    (1) expression -> expression AND . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 19
+    factor                         shift and go to state 3
+
+state 7
+
+    (2) expression -> expression RESTA . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 20
+    factor                         shift and go to state 3
+
+state 8
+
+    (11) expression -> term MAYORQUE . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 21
+    factor                         shift and go to state 3
+
+state 9
+
+    (12) expression -> term MENORQUE . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 22
+    factor                         shift and go to state 3
+
+state 10
+
+    (13) expression -> term IGUAL . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 23
+    factor                         shift and go to state 3
+
+state 11
+
+    (14) expression -> term MAYOROIGUALQUE . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 24
+    factor                         shift and go to state 3
+
+state 12
+
+    (15) expression -> term MENOROIGUALQUE . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 25
+    factor                         shift and go to state 3
+
+state 13
+
+    (16) expression -> term DIFERENTE . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 26
+    factor                         shift and go to state 3
+
+state 14
+
+    (4) term -> term MULTIPLICACION . factor
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    factor                         shift and go to state 27
+
+state 15
+
+    (5) term -> term DIVISION . factor
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    factor                         shift and go to state 28
+
+state 16
+
+    (9) term -> term POTENCIA . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 29
+    factor                         shift and go to state 3
+
+state 17
+
+    (10) term -> term RESTO . term
+    (4) term -> . term MULTIPLICACION factor
+    (5) term -> . term DIVISION factor
+    (6) term -> . factor
+    (9) term -> . term POTENCIA term
+    (10) term -> . term RESTO term
+    (7) factor -> . NUMERO
+    (8) factor -> . PARENTESISI expression PARENTESISD
+
+    NUMERO          shift and go to state 4
+    PARENTESISI     shift and go to state 5
+
+    term                           shift and go to state 30
+    factor                         shift and go to state 3
+
+state 18
+
+    (8) factor -> PARENTESISI expression . PARENTESISD
+    (1) expression -> expression . AND term
+    (2) expression -> expression . RESTA term
+
+    PARENTESISD     shift and go to state 31
+    AND             shift and go to state 6
+    RESTA           shift and go to state 7
+
+
+state 19
+
+    (1) expression -> expression AND term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 1 (expression -> expression AND term .)
+    RESTA           reduce using rule 1 (expression -> expression AND term .)
+    $end            reduce using rule 1 (expression -> expression AND term .)
+    PARENTESISD     reduce using rule 1 (expression -> expression AND term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 20
+
+    (2) expression -> expression RESTA term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 2 (expression -> expression RESTA term .)
+    RESTA           reduce using rule 2 (expression -> expression RESTA term .)
+    $end            reduce using rule 2 (expression -> expression RESTA term .)
+    PARENTESISD     reduce using rule 2 (expression -> expression RESTA term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 21
+
+    (11) expression -> term MAYORQUE term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 11 (expression -> term MAYORQUE term .)
+    RESTA           reduce using rule 11 (expression -> term MAYORQUE term .)
+    $end            reduce using rule 11 (expression -> term MAYORQUE term .)
+    PARENTESISD     reduce using rule 11 (expression -> term MAYORQUE term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 22
+
+    (12) expression -> term MENORQUE term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 12 (expression -> term MENORQUE term .)
+    RESTA           reduce using rule 12 (expression -> term MENORQUE term .)
+    $end            reduce using rule 12 (expression -> term MENORQUE term .)
+    PARENTESISD     reduce using rule 12 (expression -> term MENORQUE term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 23
+
+    (13) expression -> term IGUAL term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 13 (expression -> term IGUAL term .)
+    RESTA           reduce using rule 13 (expression -> term IGUAL term .)
+    $end            reduce using rule 13 (expression -> term IGUAL term .)
+    PARENTESISD     reduce using rule 13 (expression -> term IGUAL term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 24
+
+    (14) expression -> term MAYOROIGUALQUE term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 14 (expression -> term MAYOROIGUALQUE term .)
+    RESTA           reduce using rule 14 (expression -> term MAYOROIGUALQUE term .)
+    $end            reduce using rule 14 (expression -> term MAYOROIGUALQUE term .)
+    PARENTESISD     reduce using rule 14 (expression -> term MAYOROIGUALQUE term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 25
+
+    (15) expression -> term MENOROIGUALQUE term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 15 (expression -> term MENOROIGUALQUE term .)
+    RESTA           reduce using rule 15 (expression -> term MENOROIGUALQUE term .)
+    $end            reduce using rule 15 (expression -> term MENOROIGUALQUE term .)
+    PARENTESISD     reduce using rule 15 (expression -> term MENOROIGUALQUE term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 26
+
+    (16) expression -> term DIFERENTE term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+    AND             reduce using rule 16 (expression -> term DIFERENTE term .)
+    RESTA           reduce using rule 16 (expression -> term DIFERENTE term .)
+    $end            reduce using rule 16 (expression -> term DIFERENTE term .)
+    PARENTESISD     reduce using rule 16 (expression -> term DIFERENTE term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+
+state 27
+
+    (4) term -> term MULTIPLICACION factor .
+
+    MAYORQUE        reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    MENORQUE        reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    IGUAL           reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    MAYOROIGUALQUE  reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    MENOROIGUALQUE  reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    DIFERENTE       reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    MULTIPLICACION  reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    DIVISION        reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    POTENCIA        reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    RESTO           reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    AND             reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    RESTA           reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    $end            reduce using rule 4 (term -> term MULTIPLICACION factor .)
+    PARENTESISD     reduce using rule 4 (term -> term MULTIPLICACION factor .)
+
+
+state 28
+
+    (5) term -> term DIVISION factor .
+
+    MAYORQUE        reduce using rule 5 (term -> term DIVISION factor .)
+    MENORQUE        reduce using rule 5 (term -> term DIVISION factor .)
+    IGUAL           reduce using rule 5 (term -> term DIVISION factor .)
+    MAYOROIGUALQUE  reduce using rule 5 (term -> term DIVISION factor .)
+    MENOROIGUALQUE  reduce using rule 5 (term -> term DIVISION factor .)
+    DIFERENTE       reduce using rule 5 (term -> term DIVISION factor .)
+    MULTIPLICACION  reduce using rule 5 (term -> term DIVISION factor .)
+    DIVISION        reduce using rule 5 (term -> term DIVISION factor .)
+    POTENCIA        reduce using rule 5 (term -> term DIVISION factor .)
+    RESTO           reduce using rule 5 (term -> term DIVISION factor .)
+    AND             reduce using rule 5 (term -> term DIVISION factor .)
+    RESTA           reduce using rule 5 (term -> term DIVISION factor .)
+    $end            reduce using rule 5 (term -> term DIVISION factor .)
+    PARENTESISD     reduce using rule 5 (term -> term DIVISION factor .)
+
+
+state 29
+
+    (9) term -> term POTENCIA term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+  ! shift/reduce conflict for MULTIPLICACION resolved as shift
+  ! shift/reduce conflict for DIVISION resolved as shift
+  ! shift/reduce conflict for POTENCIA resolved as shift
+  ! shift/reduce conflict for RESTO resolved as shift
+    MAYORQUE        reduce using rule 9 (term -> term POTENCIA term .)
+    MENORQUE        reduce using rule 9 (term -> term POTENCIA term .)
+    IGUAL           reduce using rule 9 (term -> term POTENCIA term .)
+    MAYOROIGUALQUE  reduce using rule 9 (term -> term POTENCIA term .)
+    MENOROIGUALQUE  reduce using rule 9 (term -> term POTENCIA term .)
+    DIFERENTE       reduce using rule 9 (term -> term POTENCIA term .)
+    AND             reduce using rule 9 (term -> term POTENCIA term .)
+    RESTA           reduce using rule 9 (term -> term POTENCIA term .)
+    $end            reduce using rule 9 (term -> term POTENCIA term .)
+    PARENTESISD     reduce using rule 9 (term -> term POTENCIA term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+  ! MULTIPLICACION  [ reduce using rule 9 (term -> term POTENCIA term .) ]
+  ! DIVISION        [ reduce using rule 9 (term -> term POTENCIA term .) ]
+  ! POTENCIA        [ reduce using rule 9 (term -> term POTENCIA term .) ]
+  ! RESTO           [ reduce using rule 9 (term -> term POTENCIA term .) ]
+
+
+state 30
+
+    (10) term -> term RESTO term .
+    (4) term -> term . MULTIPLICACION factor
+    (5) term -> term . DIVISION factor
+    (9) term -> term . POTENCIA term
+    (10) term -> term . RESTO term
+
+  ! shift/reduce conflict for MULTIPLICACION resolved as shift
+  ! shift/reduce conflict for DIVISION resolved as shift
+  ! shift/reduce conflict for POTENCIA resolved as shift
+  ! shift/reduce conflict for RESTO resolved as shift
+    MAYORQUE        reduce using rule 10 (term -> term RESTO term .)
+    MENORQUE        reduce using rule 10 (term -> term RESTO term .)
+    IGUAL           reduce using rule 10 (term -> term RESTO term .)
+    MAYOROIGUALQUE  reduce using rule 10 (term -> term RESTO term .)
+    MENOROIGUALQUE  reduce using rule 10 (term -> term RESTO term .)
+    DIFERENTE       reduce using rule 10 (term -> term RESTO term .)
+    AND             reduce using rule 10 (term -> term RESTO term .)
+    RESTA           reduce using rule 10 (term -> term RESTO term .)
+    $end            reduce using rule 10 (term -> term RESTO term .)
+    PARENTESISD     reduce using rule 10 (term -> term RESTO term .)
+    MULTIPLICACION  shift and go to state 14
+    DIVISION        shift and go to state 15
+    POTENCIA        shift and go to state 16
+    RESTO           shift and go to state 17
+
+  ! MULTIPLICACION  [ reduce using rule 10 (term -> term RESTO term .) ]
+  ! DIVISION        [ reduce using rule 10 (term -> term RESTO term .) ]
+  ! POTENCIA        [ reduce using rule 10 (term -> term RESTO term .) ]
+  ! RESTO           [ reduce using rule 10 (term -> term RESTO term .) ]
+
+
+state 31
+
+    (8) factor -> PARENTESISI expression PARENTESISD .
+
+    MAYORQUE        reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    MENORQUE        reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    IGUAL           reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    MAYOROIGUALQUE  reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    MENOROIGUALQUE  reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    DIFERENTE       reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    MULTIPLICACION  reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    DIVISION        reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    POTENCIA        reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    RESTO           reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    AND             reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    RESTA           reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    $end            reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+    PARENTESISD     reduce using rule 8 (factor -> PARENTESISI expression PARENTESISD .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for MULTIPLICACION in state 29 resolved as shift
+WARNING: shift/reduce conflict for DIVISION in state 29 resolved as shift
+WARNING: shift/reduce conflict for POTENCIA in state 29 resolved as shift
+WARNING: shift/reduce conflict for RESTO in state 29 resolved as shift
+WARNING: shift/reduce conflict for MULTIPLICACION in state 30 resolved as shift
+WARNING: shift/reduce conflict for DIVISION in state 30 resolved as shift
+WARNING: shift/reduce conflict for POTENCIA in state 30 resolved as shift
+WARNING: shift/reduce conflict for RESTO in state 30 resolved as shift
